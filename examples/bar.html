@@ -4,13 +4,28 @@
   <meta charset="utf-8">
   <title>D3.js jQuery Plugin - Bar Chart</title>
   <link rel="stylesheet" href="../lib/d3.jquery.css">
+  <link rel="stylesheet" href="../etc/bootstrap.css">
+  <link rel="stylesheet" href="../etc/bootstrap-responsive.css">
   <script src="../etc/jquery-1.9.1.js"></script>
+  <script src="../etc/bootstrap.js"></script>
   <script src="../etc/d3.v3.js"></script>
   <script src="../lib/d3.jquery.bar.js"></script>
   
+  <style>
+    .chart {
+      font: 10px sans-serif;
+    }
+  </style>
+
   <script>
     $(document).ready(function() {
-      $("#chart").bar({
+      $(".chart").bar({
+        xField:"letter",
+        yField:"frequency",
+        bars:{
+          entering: function(enter) { enter.style("opacity", 0) },
+          entered: function(enter) { enter.transition().delay(function(d,i) { return i*100 }).style("opacity", 1) },
+        },
         data:[
           {letter:"A", frequency:12},
           {letter:"B", frequency:3},
@@ -19,11 +34,19 @@
           {letter:"E", frequency:2},
         ]
       });
-      $("#chart").bar("update");
     });
   </script>
 </head>
 <body>
-  <div id="chart"></div>
+  <div class="container">
+    <div class="row">
+      <div class="span6">
+        <div class="chart"></div>
+      </div>
+      <div class="span6">
+        <div class="chart"></div>
+      </div>
+    </div>
+  </div>
 </body>
 </html>
