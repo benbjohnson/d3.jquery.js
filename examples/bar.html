@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>D3.js jQuery Plugin - Bar Chart</title>
+  <link rel="stylesheet" href="../lib/d3.jquery.css">
+  <script src="../etc/jquery-1.9.1.js"></script>
+  <script src="../etc/d3.v3.js"></script>
+  <script src="../lib/d3.jquery.bar.js"></script>
+  
+  <script>
+    $(document).ready(function() {
+      $("#chart").bar({
+        data:[
+          {letter:"A", frequency:12},
+          {letter:"B", frequency:3},
+          {letter:"C", frequency:18},
+          {letter:"D", frequency:17},
+          {letter:"E", frequency:2},
+        ]
+      });
+      $("#chart").bar("update");
+    });
+  </script>
+</head>
+<body>
+  <div id="chart"></div>
+</body>
+</html>
